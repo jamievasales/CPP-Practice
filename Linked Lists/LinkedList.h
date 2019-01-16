@@ -62,10 +62,12 @@ void LinkedList::deleteFromData(int data) {
 
     while(current!=nullptr) {
 
-        if(current == tail && current->data == data) {
+        if(current == tail) {
+            if(current->data == data) {
             delete tail;
             tail = previous;
             tail->next = nullptr;
+            }
             return;
         }
 
