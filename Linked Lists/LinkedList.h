@@ -59,9 +59,11 @@ void LinkedList::deleteFromData(int data) {
             head = head->next;
         }
     else
+
     while(current!=nullptr) {
 
         if(current == tail && current->data == data) {
+            delete tail;
             tail = previous;
             tail->next = nullptr;
             return;
@@ -71,7 +73,9 @@ void LinkedList::deleteFromData(int data) {
                 //temp = current->next;
                 // if(current->next!= nullptr) {
                 previous = current;
-                current->next = current->next->next;
+                //current = current->next;
+                delete current->next;
+                current-> next = current->next->next;
                 // }
                 // else {
                 //     current->next = nullptr;
