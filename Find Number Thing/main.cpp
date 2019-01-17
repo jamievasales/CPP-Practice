@@ -3,12 +3,14 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <map>
 
 using namespace std;
 
 int main() {
     vector<int> theArray;
-    int num;
+     map<int,int> theMap;
+     int num;
     while(cin>>num) {
         if(!num)
         break;
@@ -18,18 +20,13 @@ int main() {
     cin.clear();
     cin.ignore();
     cin>>num;
-    sort(theArray.begin(),theArray.end());
+    for(int x=0;x<theArray.size();x++) {
+        int needed = num - theArray[x];
+        if(theMap.count(needed)>0)
+            cout<<theMap.find(needed)->second<<" "<<x;
+        else
+        theMap.insert(pair<int,int>(theArray[x],x));
+    }
 
-    int start=0;
-   for(int x=theArray.size()-1;x>-1;x--) {
-       if(theArray[x]+theArray[start]==num) {
-           cout<<start<<" "<<x<<" "<<theArray[start]<<" "<<theArray[x];
-           return theArray[x];
-       }
-       else if(theArray[x]+theArray[start]<num) {
-           start++;
-           x++;
-       }
-   }
     return 0;
 }
