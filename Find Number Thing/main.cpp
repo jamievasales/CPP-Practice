@@ -9,7 +9,9 @@ using namespace std;
 
 int main() {
     vector<int> theArray;
-    int num;
+     map<int,int> theMap;
+     int num;
+     cout<<"Please enter numbers (hitting enter with each number) and terminating with a non-numeric key"<<endl;
     while(cin>>num) {
         if(!num)
         break;
@@ -18,25 +20,17 @@ int main() {
     }
     cin.clear();
     cin.ignore();
+    cout<<"Please enter your target sum (the first indexs will be returned)"<<endl;
     cin>>num;
+    for(int x=0;x<theArray.size();x++) {
+        int needed = num - theArray[x];
+        if(theMap.count(needed)>0) {
+            cout<<"the sum of the target is found at index "<<theMap.find(needed)->second<<" and "<<x<<endl;
+            break;
+        }
+        else
+        theMap.insert(pair<int,int>(theArray[x],x));
+    }
 
-    map<int,int> originalPositions;
-
-    for(int x=0;x<theArray.size();x++)
-    originalPositions.insert(pair<int,int>(theArray[x],x));
-
-    sort(theArray.begin(),theArray.end());
-
-    int start=0;
-   for(int x=theArray.size()-1;x>-1;x--) {
-       if(theArray[x]+theArray[start]==num) {
-           cout<<start<<" "<<x<<" "<<theArray[start]<<" "<<theArray[x];
-           return theArray[x];
-       }
-       else if(theArray[x]+theArray[start]<num) {
-           start++;
-           x++;
-       }
-   }
     return 0;
 }
