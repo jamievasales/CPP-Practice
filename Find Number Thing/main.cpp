@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <map>
 
 using namespace std;
 
@@ -18,6 +19,12 @@ int main() {
     cin.clear();
     cin.ignore();
     cin>>num;
+
+    map<int,int> originalPositions;
+
+    for(int x=0;x<theArray.size();x++)
+    originalPositions.insert(pair<int,int>(theArray[x],x));
+
     sort(theArray.begin(),theArray.end());
 
     int start=0;
