@@ -18,11 +18,11 @@ int main() {
     int toFind = distSize(rng);
     vector<int> numbers;
     for (auto i=0; i<arraysize;i++)
-    numbers.push_back(distSize(rng));
+        numbers.push_back(distSize(rng));
     sort(numbers.begin(),numbers.end());
     if(arraysize<=1000) //we don't want to flood the terminal!
-    for(auto i : numbers)
-    cout<<i<<',';
+        for(auto i : numbers)
+            cout<<i<<',';
     cout<<endl;
     cout<<toFind<<" "<<binarySearch(numbers,toFind)<<endl;
     return 0;
@@ -36,7 +36,7 @@ int binarySearch(vector<int> sequence,int toFind) {
         int mid = (low+high)/2;
         if(sequence[mid]==toFind){
             cout<<endl<<mid<<endl;
-        return count;
+            return count;
         }
         else if(toFind>sequence[mid]) {
             low=mid+1;
